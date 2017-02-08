@@ -1,0 +1,36 @@
+@import "ionic.globals";
+
+// Multi-Picker
+// --------------------------------------------------
+city-picker {
+  display: flex;
+  overflow: hidden;
+}
+
+.city-picker-text {
+  overflow: hidden;
+
+  flex: 1;
+
+  min-width: 16px;
+  min-height: 1.2em;
+
+  font-size: inherit;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.city-picker-disabled,
+.item-city-picker-disabled ion-label {
+  opacity: .4;
+
+  pointer-events: none;
+}
+
+.item-label-stacked city-picker,
+.item-label-floating city-picker {
+  padding-left: 0;
+
+  width: 100%;
+}

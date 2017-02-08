@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>省市区选择器</ion-label>
+    <city-picker id='advanced' item-content [citiesData]="dependentColumns" [(ngModel)]="text" (ionChange)="e($event)"></city-picker>
+  </ion-item>
+  <p>地区编码：  {{zipCode}}
+  </p>
+</ion-content>
