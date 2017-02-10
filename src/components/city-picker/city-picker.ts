@@ -1,8 +1,10 @@
-import { AfterContentInit, Component, EventEmitter, forwardRef, HostListener, Input, OnDestroy, Optional, Output, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, forwardRef, HostListener, Input, OnDestroy, Optional, Output,
+  ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   PickerController, Form, Item, PickerCmp, PickerColumnCmp
 } from 'ionic-angular';
+
 import { CityPickerColumn } from './city-picker.model';
 
 export const CITY_PICKER_VALUE_ACCESSOR: any = {
@@ -45,7 +47,6 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
    _provinceCol :number = 0;
    _cityCol :number = 0;
    _regionCol :number = 0;
-
 
   /**
    * @private
@@ -161,87 +162,43 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     });
   }
 
-
   /**
    * @private
    */
   generate(picker: any) {
     let values = this._value.toString().split(this.separator);
 
+    // Add province data to picker
     let provinceCol: any = {
-      name:  '0',
-      options: this.citiesData.map( province => {return { text: province.name, value: province.code, disabled: false } } )
+      name:  'province',
+      options: this.citiesData.map( province => { return { text: province.name, value: province.code, disabled: false } } )
     };
     let provinceIndex = this.citiesData.findIndex( option => option.name == values[0]);
     provinceIndex = provinceIndex === -1 ? 0 : provinceIndex;
     provinceCol.selectedIndex = provinceIndex;
+    picker.addColumn(provinceCol);
 
-
-
+    // Add city data to picker
+    let cityColData = this.citiesData[provinceCol.selectedIndex].children;
     let cityCol: any = {
-      name:  '1',
-      options: (() => {
-        if(this.citiesData[provinceCol.selectedIndex].children && this.citiesData[provinceCol.selectedIndex].children.length > 0){
-          return  this.citiesData[provinceCol.selectedIndex]
-            .children
-            .map( city => {
-              return { text: city.name, value: city.code, disabled: false }
-            } );
-        }else {
-          return [];
-        }
-      })()
+      name:  'city',
+      options: cityColData.map( city => { return {text: city.name, value: city.code, disabled: false} })
     };
-
-    let cityIndex:number;
-    if(this.citiesData[provinceCol.selectedIndex].children && this.citiesData[provinceCol.selectedIndex].children.length > 0){
-
-      cityIndex = this.citiesData[provinceCol.selectedIndex].children.findIndex( option => option.name == values[1]);
-
-    }else {
-      cityIndex = -1
-    }
+    let cityIndex = cityColData.findIndex( option => option.name == values[1]);
     cityIndex = cityIndex === -1 ? 0 : cityIndex;
     cityCol.selectedIndex = cityIndex;
+    picker.addColumn(cityCol);
 
-
-
+    // Add region data to picker
+    let regionData = this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children;
     let regionColCol: any = {
-      name:  '2',
-      options: (() => {
-        if(this.citiesData[provinceCol.selectedIndex].children
-          &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children
-          &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children.length >0 ){
-          return this.citiesData[provinceCol.selectedIndex]
-            .children[cityCol.selectedIndex]
-            .children
-            .map( city => {
-              return { text: city.name, value: city.code, disabled: false }
-            } )
-        }else {
-          return [];
-        }
-      })()
+      name:  'region',
+      options: regionData.map( city => {return { text: city.name, value: city.code, disabled: false }} )
     };
-
-    let regionIndex:number;
-    if(this.citiesData[provinceCol.selectedIndex].children
-      &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children
-      &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children.length >0 ){
-
-      regionIndex = this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children.findIndex( option => option.name == values[2]);
-
-    }else {
-      regionIndex = -1
-    }
-
+    let regionIndex = regionData.findIndex( option => option.name == values[2]);
     regionIndex = regionIndex === -1 ? 0 : regionIndex;
     regionColCol.selectedIndex = regionIndex;
-
-    picker.addColumn(provinceCol);
-    picker.addColumn(cityCol);
     picker.addColumn(regionColCol);
-
 
     this.divyColumns(picker);
   }
@@ -259,46 +216,18 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
 
     if(cityCol && this._provinceCol != provinceCol.selectedIndex){
       cityCol.selectedIndex = 0;
-
-      cityCol.options =  (() => {
-        if(this.citiesData[provinceCol.selectedIndex].children && this.citiesData[provinceCol.selectedIndex].children.length > 0){
-          return  this.citiesData[provinceCol.selectedIndex]
-            .children
-            .map( city => {
-              return { text: city.name, value: city.code, disabled: false }
-            } );
-        }else {
-          return [];
-        }
-      })();
+      let cityColData = this.citiesData[provinceCol.selectedIndex].children;
+      cityCol.options =  cityColData.map( city => { return {text: city.name, value: city.code, disabled: false} });
       if( this._pickerColumnCmps && cityCol.options.length > 0){
         setTimeout(() => this._pickerColumnCmps[1].setSelected(0, 100), 0);
       }
     }
 
     if(regionCol && (this._cityCol != cityCol.selectedIndex || this._provinceCol != provinceCol.selectedIndex)){
-
+      let regionData = this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children;
       regionCol.selectedIndex = 0;
-      regionCol.options = (() => {
-        if(
-          this.citiesData[provinceCol.selectedIndex]
-          && this.citiesData[provinceCol.selectedIndex].children
-          &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex]
-          &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children
-          &&  this.citiesData[provinceCol.selectedIndex].children[cityCol.selectedIndex].children.length >0 ){
-
-          return this.citiesData[provinceCol.selectedIndex]
-            .children[cityCol.selectedIndex]
-            .children
-            .map( city => {
-              return { text: city.name, value: city.code, disabled: false }
-            } )
-        }else {
-          return [];
-        }
-      })();
+      regionCol.options = regionData.map( city => {return { text: city.name, value: city.code, disabled: false }} );
       if( this._pickerColumnCmps && regionCol.options.length > 0){
-
         setTimeout(() => this._pickerColumnCmps[2].setSelected(0, 100), 0);
       }
 
@@ -331,13 +260,13 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     });
 
     if (columns.length === 2) {
-      var width = Math.max(columns[0], columns[1]);
+      let width = Math.max(columns[0], columns[1]);
       pickerColumns[0].align = 'right';
       pickerColumns[1].align = 'left';
       pickerColumns[0].optionsWidth = pickerColumns[1].optionsWidth = `${width * 17}px`;
 
     } else if (columns.length === 3) {
-      var width = Math.max(columns[0], columns[2]);
+      let width = Math.max(columns[0], columns[2]);
       pickerColumns[0].align = 'right';
       pickerColumns[1].columnWidth = `${columns[1] * 17}px`;
       pickerColumns[0].optionsWidth = pickerColumns[2].optionsWidth = `${width * 17}px`;
@@ -455,7 +384,7 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
    * @private
    */
   getString(newData) {
-    return `${newData['0'].text}${this.separator}${newData['1'].text || ''}${this.separator}${newData['2'].text || ''}`;
+    return `${newData['province'].text}${this.separator}${newData['city'].text || ''}${this.separator}${newData['region'].text || ''}`;
   }
 
 }
