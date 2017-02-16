@@ -21,10 +21,10 @@ CityPickerModule = __decorate([
     core_1.NgModule({
         imports: [ionic_angular_1.IonicModule, common_1.CommonModule],
         declarations: [city_picker_1.CityPicker],
-        exports: [],
-        entryComponents: [city_picker_1.CityPicker],
+        exports: [city_picker_1.CityPicker],
         schemas: [
-            core_1.CUSTOM_ELEMENTS_SCHEMA
+            core_1.CUSTOM_ELEMENTS_SCHEMA,
+            core_1.NO_ERRORS_SCHEMA
         ]
     }),
     __metadata("design:paramtypes", [])
