@@ -8,7 +8,7 @@ https://github.com/driftyco/ionic/blob/master/src/components/datetime/datetime.t
 ![](https://github.com/HsuanXyz/hsuan.github.io/blob/master/assets/ionic2-city-picker/%E5%9C%B0%E5%8C%BA%E9%80%89%E6%8B%A9.gif?raw=true)
 
 ## Install
-`npm install ion-city-picker --save`
+`npm install ionic2-city-picker --save`
 
 ## Json 下载
 https://raw.githubusercontent.com/HsuanXyz/hsuan.github.io/master/assets/ionic2-city-picker/city-data.json.zip
