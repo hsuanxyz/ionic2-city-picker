@@ -248,10 +248,10 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     let pickerColumns = picker.getColumns();
     let columns: number[] = [];
 
-    pickerColumns.forEach((col, i) => {
+    pickerColumns.forEach((col:any, i:any) => {
       columns.push(0);
 
-      col.options.forEach(opt => {
+      col.options.forEach((opt:any) => {
         if (opt.text.length > columns[i]) {
           columns[i] = opt.text.length;
         }
@@ -383,7 +383,7 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
   /**
    * @private
    */
-  getString(newData) {
+  getString(newData:any) {
     return `${newData['province'].text}${this.separator}${newData['city'].text || ''}${this.separator}${newData['region'].text || ''}`;
   }
 
