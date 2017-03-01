@@ -20,7 +20,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 ...
-import { CityPickerModule } from  "ionic2-city-picker/dist/city-picker.module"
+import { CityPickerModule } from  "ionic2-city-picker"
 
 @NgModule({
   declarations: [
