@@ -1,4 +1,8 @@
 # ionic2-city-picker
+
+[![Dependency Status](https://david-dm.org/HsuanXyz/ionic2-city-picker.svg)](https://david-dm.org/HsuanXyz/ionic2-city-picker)
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![MIT License][license-image]][license-url]
+
 ionic2 的省市区选择插件
 灵感(抄袭😄)来自于
 
@@ -158,3 +162,12 @@ export class HomePage {
 | 名称       | 描述 |
 | ---------- | --- |
 |ionChange | 城市选择器被改变时触发的事件 |
+
+[npm-url]: https://www.npmjs.com/package/ionic2-city-picker
+[npm-image]: https://img.shields.io/npm/v/ionic2-city-picker.svg
+
+[downloads-image]: https://img.shields.io/npm/dm/ionic2-city-picker.svg
+[downloads-url]: http://badge.fury.io/js/ionic2-city-picker
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
