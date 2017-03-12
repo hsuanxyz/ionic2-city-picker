@@ -9,13 +9,13 @@ ionic2 的省市区选择插件
 https://github.com/raychenfj/ion-multi-picker
 https://github.com/driftyco/ionic/blob/master/src/components/datetime/datetime.ts
 
-![](https://github.com/HsuanXyz/hsuan.github.io/blob/master/assets/ionic2-city-picker/%E5%9C%B0%E5%8C%BA%E9%80%89%E6%8B%A9.gif?raw=true)
+![](https://github.com/HsuanXyz/hsuanxyz.github.io/blob/master/assets/ionic2-city-picker/%E5%9C%B0%E5%8C%BA%E9%80%89%E6%8B%A9.gif?raw=true)
 
 ## Install
 `npm install ionic2-city-picker --save`
 
 ## Json 下载
-https://raw.githubusercontent.com/HsuanXyz/hsuan.github.io/master/assets/ionic2-city-picker/city-data.json.zip
+https://raw.githubusercontent.com/HsuanXyz/hsuanxyz.github.io/master/assets/ionic2-city-picker/city-data.json.zip
 
 ## Use
 import module
