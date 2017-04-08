@@ -1,9 +1,7 @@
 import { AfterContentInit, Component, EventEmitter, forwardRef, HostListener, Input, OnDestroy, Optional, Output,
   ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  PickerController, Form, Item, PickerCmp, PickerColumnCmp
-} from 'ionic-angular';
+import { PickerController, Form, Item, PickerCmp, PickerColumnCmp } from 'ionic-angular';
 
 import { CityPickerColumn } from './city-picker.model';
 
@@ -148,14 +146,13 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     this.validate(picker);
 
     picker.ionChange.subscribe(() => {
+      this._pickerColumnCmps = picker && picker.instance && picker.instance._cols && picker.instance._cols.toArray();
       this.validate(picker);
     });
 
     picker.present(pickerOptions);
 
     this._isOpen = true;
-    this._pickerCmp = picker.instance;
-    this._pickerColumnCmps = this._pickerCmp._cols.toArray();
 
     picker.onDidDismiss(() => {
       this._isOpen = false;
