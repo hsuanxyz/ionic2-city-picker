@@ -12,7 +12,8 @@
   },
   "exclude": [
    "node_modules",
-   "dist"
+   "dist",
+    "aot"
  ],
   "angularCompilerOptions": {
      "genDir": "aot"
