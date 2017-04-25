@@ -165,7 +165,6 @@ export var CityPicker = (function () {
                 setTimeout(function () { return _this._pickerColumnCmps[2].setSelected(0, 100); }, 0);
             }
         }
-        picker.refresh();
         this._provinceCol = provinceCol.selectedIndex;
         this._cityCol = cityCol.selectedIndex;
         this._regionCol = regionCol.selectedIndex;

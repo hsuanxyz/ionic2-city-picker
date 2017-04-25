@@ -232,8 +232,6 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
 
     }
 
-    picker.refresh();
-
     this._provinceCol = provinceCol.selectedIndex;
     this._cityCol     = cityCol.selectedIndex;
     this._regionCol   = regionCol.selectedIndex;
