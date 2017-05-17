@@ -152,6 +152,7 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     picker.present(pickerOptions).then(()=>{
       this._pickerCmp = picker.instance;
       this._pickerColumnCmps = this._pickerCmp._cols.toArray();
+      this._pickerColumnCmps.forEach(col => col.lastIndex = -1);
     });
 
     this._isOpen = true;

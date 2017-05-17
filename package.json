@@ -1,6 +1,6 @@
 {
   "name": "ionic2-city-picker",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "ionic2 ",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

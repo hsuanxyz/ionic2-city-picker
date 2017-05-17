@@ -98,6 +98,7 @@ export var CityPicker = (function () {
         picker.present(pickerOptions).then(function () {
             _this._pickerCmp = picker.instance;
             _this._pickerColumnCmps = _this._pickerCmp._cols.toArray();
+            _this._pickerColumnCmps.forEach(function (col) { return col.lastIndex = -1; });
         });
         this._isOpen = true;
         picker.onDidDismiss(function () {
