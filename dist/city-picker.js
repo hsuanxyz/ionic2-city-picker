@@ -140,6 +140,9 @@ export var CityPicker = (function () {
         regionColCol.selectedIndex = regionIndex;
         picker.addColumn(regionColCol);
         this.divyColumns(picker);
+        this._provinceCol = provinceCol.selectedIndex;
+        this._cityCol = cityCol.selectedIndex;
+        this._regionCol = regionColCol.selectedIndex;
     };
     /**
      * @private

@@ -198,9 +198,15 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     let regionIndex = regionData.findIndex( option => option.name == values[2]);
     regionIndex = regionIndex === -1 ? 0 : regionIndex;
     regionColCol.selectedIndex = regionIndex;
+
     picker.addColumn(regionColCol);
 
     this.divyColumns(picker);
+
+    this._provinceCol = provinceCol.selectedIndex;
+    this._cityCol     = cityCol.selectedIndex;
+    this._regionCol   = regionColCol.selectedIndex;
+
   }
 
   /**
@@ -236,7 +242,6 @@ export class CityPicker implements AfterContentInit, ControlValueAccessor, OnDes
     this._provinceCol = provinceCol.selectedIndex;
     this._cityCol     = cityCol.selectedIndex;
     this._regionCol   = regionCol.selectedIndex;
-
   }
 
   /**
