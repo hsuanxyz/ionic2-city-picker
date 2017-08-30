@@ -83,7 +83,7 @@ import {CityPickerService} from "../../providers/city-picker";
 })
 export class HomePage {
   cityData: any[]; //城市数据
-  cityName:string = '北京市 北京市 东城区'; //初始化城市名
+  cityName:string = '北京市-北京市-东城区'; //初始化城市名
   code:string; //城市编码
   constructor(
     public navCtrl: NavController,
@@ -130,7 +130,7 @@ export class HomePage {
     <city-picker item-content
                  [cancelText]="'取消'"
                  [doneText]="'完成'"
-                 [separator]="' - '"
+                 [separator]="'-'"
                  [citiesData]="cityData"
                  [(ngModel)]="cityName"
                  (ionChange)="cityChange($event)">
