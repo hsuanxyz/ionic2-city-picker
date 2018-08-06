@@ -19,7 +19,8 @@ https://raw.githubusercontent.com/HsuanXyz/hsuanxyz.github.io/master/assets/ioni
 
 ## Use
 import module
-```
+
+```ts
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -45,7 +46,8 @@ import { CityPickerModule } from  "ionic2-city-picker"
 export class AppModule {}
 ```
 获取城市数据json服务
-```
+
+```ts
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -71,7 +73,8 @@ export class CityPickerService {
 }
 ```
 视图控制器
-```
+
+```ts
 import { Component } from '@angular/core';
 
 import {NavController, NavParams} from 'ionic-angular';
@@ -116,7 +119,8 @@ export class HomePage {
 
 ```
 视图
-```
+
+```html
 <ion-header>
   <ion-navbar>
     <ion-title>选择城市</ion-title>
